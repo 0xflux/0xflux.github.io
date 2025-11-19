@@ -6,6 +6,8 @@ nav_order: 1
 
 # Wyrm C2 Documentation
 
+You can find the tool [here on GitHub](https://github.com/0xflux/Wyrm).
+
 Wyrm (pronounced 'worm', an old English word for 'serpent' or 'dragon') is a post exploitation, open source, Red Team security testing framework framework, written in Rust designed to be used by Red Teams, Purple Teams, Penetration Testers, and general infosec hobbyists. 
 
 This project is fully built in Rust, with extra effort going into obfuscating artifacts which could be present in memory. Project created and maintained by [flux](https://github.com/0xflux/), for **legal authorised security testing only**.
