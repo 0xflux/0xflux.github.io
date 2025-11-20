@@ -38,7 +38,7 @@ To generate valid TLS certificates, you have several options.
 
 Once you have generated the cert and private key, please place them into `Wyrm/docker/certs`.
 
-#### Important note for localhost testing
+### Important note for localhost testing
 
 **Important note**: If you are testing the Wyrm C2 on your localhost network - you need a certificate issued by a CA which your computer
 trusts. This is required for both the agent **and** the GUI web client. Because of the architecture of the server-client, authentication takes
