@@ -59,3 +59,10 @@ Now, you can access the client on http://localhost:3000.
 The first time you log into the server, the username and password will be set. **Note:** this is a planned change for the future,
 but for now, the first login will set the username and password for the C2. It is recommended you log in immediately
 after deployment to set the username and password for logging into the C2.
+
+## Profiles
+
+Please see the dedicated section for profiles, however - an example profile is provided with all settings highlighted and 
+documented in `c2/profiles/profile.example.toml`. It is recommended you copy this to a new file and edit it there, as any 
+other profile is excluded from git so updates will not affect your profiles **ONLY** if you create a new profile 
+file, `profile.example.toml` will be updated as changes are made for documentation purposes.
