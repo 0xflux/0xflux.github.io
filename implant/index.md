@@ -6,7 +6,8 @@ nav_order: 3
 
 # Implant
 
-The implant represents the base building block of the Wyrm C2 from an 'actions on objective' perspective. The base implant comes in several flavours -
+The implant represents the base building block of the Wyrm C2 from an 'actions on objective' perspective. The base implant 
+comes in several (Windows) flavours -
 
 - Exe
 - DLL
