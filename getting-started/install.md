@@ -5,21 +5,57 @@ parent: Getting Started
 nav_order: 5
 ---
 
-# Pre Installation Requirements
+# Installing the server
 
-The installation process describes installing the Wyrm C2 framework on a server for production use. Anywhere where there
-is a caveat for localhost testing, this will be explicitly called out. The guide is set out to describe the installation on 
-a Debian server, targeting a Windows host.
+The recommended way to run the server is via docker.
 
-Before beginning the installation process, the following requirements must be satisfied:
+Beforehand, you may wish to alter some default environment settings - please make sure you do this before running
+the containers for the first time.
 
-- C2 platform, this may be either:
-  - A server for production (any Linux or Windows server will work, but the docs are specifically tailored for Debian), or
-  - A localhost machine (can be a Windows PC, VM, Linux PC, etc)
-- Docker installed on the C2 target platform
-- At least 40 GB of storage
-- At least 2 GB RAM
-- A method of obtaining a TLS certificate (either from a paid-for CA, LetsEncrypt, or a trusted localhost CA [for localhost testing only]). If you do not know what this means, no fear, we cover TLS generation in the install docs.
+## Environment
 
+The `.env` file contains two important variables you may wish to change before running for the first time.
 
-Once you have satisfied the above requirements, please clone the [repository](https://github.com/0xflux/Wyrm) with the command: `git clone https://github.com/0xflux/Wyrm` and `cd` into the newly created dir.
+Feel free to change the password and db name - it is recommended to change the password...
+
+```shell
+POSTGRES_PASSWORD=wyrm_db_admin
+POSTGRES_DB=wyrm
+```
+
+## Containers
+
+The project uses two main container build pipelines. Due to the use of `lukemathwalker/cargo-chef`, when building 
+with docker, we need to include the `--build` flag. This allows us to cache dependencies - this is useful in terms of development. When developing and using docker as the primary means of serving the server, it speeds up the build process.
+
+Due to cargo chef and cargo in general, expect the docker builds to take up ~ 30 GB of main memory. If this is a problem, you can manually build the 
+components, and drop the binaries onto a server, but you will have to manually parse the `Dockerfiles` to set up the environment correctly.
+
+Expect the build process to take several minutes when building for the first time, especially the client.
+
+- C2: This build pipeline pulls in the implant, shared, and c2 crates within the root `Wyrm` directory. 
+- Client: This build pipeline pulls in the client and shared crates.
+
+## Building
+
+To have the C2 run and be exposed to the internet, simply run (in order):
+
+```shell
+docker compose up -d --build c2_db # Database
+docker compose up -d --build c2 # Main C2
+docker compose up -d --build nginx # Nginx web server
+```
+
+To run the client, simply run:
+
+```shell
+docker compose up -d --build client
+```
+
+Now, you can access the client on http://localhost:3000.
+
+## Setting the C2 login account
+
+The first time you log into the server, the username and password will be set. **Note:** this is a planned change for the future,
+but for now, the first login will set the username and password for the C2. It is recommended you log in immediately
+after deployment to set the username and password for logging into the C2.

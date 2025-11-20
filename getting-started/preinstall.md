@@ -22,5 +22,4 @@ Before beginning the installation process, the following requirements must be sa
 - A method of obtaining a TLS certificate (either from a paid-for CA, LetsEncrypt, or a trusted localhost CA [for localhost testing only]). If you do not know what this means, no fear, we cover TLS generation in the install docs.
 - A domain name(s) / IP to use for C2 & control of the DNS records.
 
-
 Once you have satisfied the above requirements, please clone the [repository](https://github.com/0xflux/Wyrm) with the command: `git clone https://github.com/0xflux/Wyrm` and `cd` into the newly created dir.
