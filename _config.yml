@@ -3,6 +3,5 @@ description: Docs for the Wyrm C2
 theme: just-the-docs
 
 url: https://docs.wyrm-c2.com/
-logo: "/assets/images/logo.png"
 favicon_ico: "/assets/images/favicon.ico"
 color_scheme: dark
