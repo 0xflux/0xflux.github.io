@@ -5,6 +5,6 @@ parent: C2
 nav_order: 5
 ---
 
-# Dashboard
+# Loot
 
 Loot mechanisms info...
