@@ -25,12 +25,12 @@ completely defeats Defender's dynamic machine learning / heuristic detection mod
 
 Patching ETW has many benefits, you can read some useful links on this below, including from my own blog!
 
-- https://fluxsec.red/etw-patching-rust
-- https://fluxsec.red/event-tracing-for-windows-threat-intelligence-rust-consumer
-- https://www.mdsec.co.uk/2020/03/hiding-your-net-etw/
-- https://reprgm.github.io/2023/08/30/lets-make-malware-part-11/
-- https://www.bordergate.co.uk/unhooking-event-tracing-for-windows/
-- https://fluxsec.red/full-spectrum-event-tracing-for-windows-detection-in-the-kernel-against-rootkits
+- [https://fluxsec.red/etw-patching-rust]
+- [https://fluxsec.red/event-tracing-for-windows-threat-intelligence-rust-consumer]
+- [https://www.mdsec.co.uk/2020/03/hiding-your-net-etw]
+- [https://reprgm.github.io/2023/08/30/lets-make-malware-part-11]
+- [https://www.bordergate.co.uk/unhooking-event-tracing-for-windows]
+- [https://fluxsec.red/full-spectrum-event-tracing-for-windows-detection-in-the-kernel-against-rootkits]
 
 To enable this feature, simply set:
 
