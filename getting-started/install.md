@@ -33,6 +33,9 @@ components, and drop the binaries onto a server, but you will have to manually p
 Expect the build process to take several minutes when building for the first time, especially the client.
 
 - C2: This build pipeline pulls in the implant, shared, and c2 crates within the root `Wyrm` directory. 
+  - **Note** that the C2 is hardcoded to use the internal port (within the docker container + exposed to the local machine) 13371, and will broadcast internally on `0.0.0.0`. 
+  - **Note** that the Nginx configuration is designed to listen on this port for the reverse proxy.
+  - If you wish to manually change the above, you will need to do so in the `docker-compose.yml` and `nginx/nginx.conf`.
 - Client: This build pipeline pulls in the client and shared crates.
 
 ## Profiles
