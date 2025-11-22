@@ -23,7 +23,7 @@ written a [blog post about timestomping](https://fluxsec.red/timestomping-pe-com
 To timestomp the binary, you can use the `timestomp` key with a british date/time format as follows:
 
 ```toml
-timestomp = "08/04/2022 19:53:15"
+evasion.timestomp = "08/04/2022 19:53:15"
 ``
 
 This will change the Time-Date Stamp in the binary as follows:

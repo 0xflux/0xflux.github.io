@@ -22,14 +22,13 @@ supported method of communication back to the C2.
 
 You must supply the following keys:
 
-- `protocol`: The protocol in which the implant talks to the server.
-- `address`: The domain name (including protocol) or IP address of your C2 (or redirector).
-- `port`: The port in which to communicate with the C2 (if you are running non-standard).
-- `token`: A unique token for the implant to authorise it to communicate with the C2. This is optional under the implant sub-profile (if you want custom tokens issued to different implants), but required at the `server` level for the server configuration.
-- `uri`: Defined at the `server` level, this is an array of URIs which the agent will randomly select to beacon out to. For example: `["/submit.aspx", "/login", "/about"]`.
+- `network.address`: The domain name (including protocol) or IP address of your C2 (or redirector).
+- `network.port`: The port in which to communicate with the C2 (if you are running non-standard).
+- `token`: A unique token for the implant to authorise it to communicate with the C2. This is optional under the `implant.network` key (if you want custom tokens issued to different implants), but required at the `server` level for the server configuration.
+- `network.uri`: An array of URIs which the agent will randomly select to beacon out to. For example: `["/submit.aspx", "/login", "/about"]`.
 
 The following keys are optional:
 
-- `sleep`: The default sleep time for a newly spawned beacon. If this field is not set, it will default to 3600 seconds (1 hour). This key can be supplied at the `implant` level in the `toml`, or the top level.
-- `jitter`: This is defined at the `server` level of the `toml` and specifies jitter as a % of the max sleep time. If sleep is 10 seconds, setting jitter to 50% will cause the implant to check-in between every 5 seconds and 10 seconds.
-- `useragent`: The user-agent which the implant appears as. If not set, the user-agent will default to `Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36`, the most common user-agent across the web (according to statistics I looked at).
+- `network.sleep`: The default sleep time for a newly spawned beacon. If this field is not set, it will default to 3600 seconds (1 hour). This key can be supplied at the `implant` level in the `toml`, or the top level.
+- `network.jitter`: Specifies jitter as a % of the max sleep time. If sleep is 10 seconds, setting jitter to 50% will cause the implant to check-in between every 5 seconds and 10 seconds.
+- `network.useragent`: The user-agent which the implant appears as. If not set, the user-agent will default to `Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36`, the most common user-agent across the web (according to statistics I looked at).

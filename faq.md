@@ -23,3 +23,15 @@ A 502 generally indicates in this ecosystem a panic (either explicit or via a `.
 ![log error](image.png)
 
 It is also worth saying, a panic does not mean your server will crash, simply that request will 'crash'. Thanks to the magic of Rust & Axum the C2 will remain stable.
+
+## After pulling an update my web server is not working right?
+
+Read the release notes, ensure you do a clean build of changed components, usually:
+
+- `docker compose up -d --build c2`
+- `docker compose up -d --build nginx`
+- `docker compose up -d --build client`
+
+And make sure to restart nginx for it to have ingested the latest configs.
+
+- `docker compose restart nginx`

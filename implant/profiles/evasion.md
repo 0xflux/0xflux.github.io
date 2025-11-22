@@ -13,8 +13,8 @@ Please refer to the parent page for where the below keys should go in the profil
 
 The implant can be configured for sandbox evasion with the following settings:
 
-- `ram`: This will make the implant check that there is at least 4 GB of memory installed on the machine.
-- `trig`: This checks for trigonometric movements of a mouse on the screen which are more likely to be done by a human. This is inspired by some anti-sandbox implemented by LummaC2 as reported on by [Outpost24](https://outpost24.com/blog/lummac2-anti-sandbox-technique-trigonometry-human-detection/).
+- `anti_sandbox.ram`: This will make the implant check that there is at least 4 GB of memory installed on the machine.
+- `anti_sandbox.trig`: This checks for trigonometric movements of a mouse on the screen which are more likely to be done by a human. This is inspired by some anti-sandbox implemented by LummaC2 as reported on by [Outpost24](https://outpost24.com/blog/lummac2-anti-sandbox-technique-trigonometry-human-detection/).
 
 ## In memory 
 
@@ -35,5 +35,5 @@ Patching ETW has many benefits, you can read some useful links on this below, in
 To enable this feature, simply set:
 
 ```toml
-patch_etw = true
+evasion.patch_etw = true
 ```
