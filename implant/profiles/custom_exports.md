@@ -12,7 +12,7 @@ As of version 0.4.4 of Wyrm, you can now define custom exports on built DLL's. T
 - Create a custom export for launching the main Wyrm payload. Note that this will remove the default export of `run`. You can specify as many of these as you wish.
 - Create a custom export, with accompanying machine code. This would mostly be useful as an anti-analysis tactic, or to run some custom shellcode (such as  starting a loader for something).
 
-If you wish to see the implementation notes on this, check it out on my blog!
+If you wish to see the implementation notes on this, check it out on [my blog](https://fluxsec.red/creating-implant-dll-exports-wyrm-c2)!
 
 This image here shows the result of doing this, explained below.
 
