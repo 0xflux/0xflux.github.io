@@ -58,4 +58,10 @@ evasion.patch_etw = true # Optional, patches Events Tracing for Windows on the p
 
 anti_sandbox.ram = true # Optional
 anti_sandbox.trig = true # Optional
+
+# Optional define custom DLL exports, including custom names which launch the agent, 
+# or you can provide an export which runs machine code for anti-analysis (or even just shellcode)
+exports.ToWyrmOnly = {}
+exports.WithMachineCode = { machine_code = [0x90, 0x90, 0xC3] }
+
 ```
