@@ -33,7 +33,7 @@ token = "a_default_token" # A default value if not specified in a listener - a c
 # Give the implant a name (in this case, it is called 'default'). You can choose to build all implants by entering 'all' on the C2,
 # or you can build specific ones by passing in the implant's name, in this case, it is 'default'.
 [implants.default]
-debug = true # Optional, true specifies a debug build - note this will also mean strings are not encrypted if set to true
+debug = false # Optional, true specifies a debug build - note this will also mean strings are not encrypted if set to true
 
 network.address = "https://localhost" # required
 # The URI cannot match a download URI, the server will return an error
