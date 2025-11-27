@@ -3,6 +3,9 @@
         "certbot",
         "Fastly",
         "OPSEC",
+        "timestomp",
+        "Timestomping",
+        "Userspowershell",
         "Wyrm",
         "yara"
     ]

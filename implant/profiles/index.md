@@ -15,6 +15,9 @@ I recommend you keeping your live profile settings in `/c2/profiles/` **outside*
 copy this directory into the container. That directory is not tracked in git, so pulling updates to the project should not affect
 your profile. As always, it is advisable to keep a backup of your profile between updates just in case.
 
+As you should edit the profile which exists outside docker (as explained above), you should then run `docker compose up -d --build c2`
+to re-ingest the changed profile.
+
 # Profile layout
 
 The profile comes in the form of a `toml` which must be located in `c2/profiles/*`. You can name it whatever you like, but one
@@ -34,6 +37,7 @@ token = "a_default_token" # A default value if not specified in a listener - a c
 # or you can build specific ones by passing in the implant's name, in this case, it is 'default'.
 [implants.default]
 debug = false # Optional, true specifies a debug build - note this will also mean strings are not encrypted if set to true
+svc_name = "PrintScanService" # Name passed to SCM of the .svc binary
 
 network.address = "https://localhost" # required
 # The URI cannot match a download URI, the server will return an error
@@ -57,11 +61,20 @@ evasion.timestomp = "08/04/2022 19:53:15"
 evasion.patch_etw = true # Optional, patches Events Tracing for Windows on the process
 
 anti_sandbox.ram = true # Optional
-anti_sandbox.trig = true # Optional
+anti_sandbox.trig = true # Optional (does not apply to the svc binary)
 
 # Optional define custom DLL exports, including custom names which launch the agent, 
-# or you can provide an export which runs machine code for anti-analysis (or even just shellcode)
-exports.ToWyrmOnly = {}
-exports.WithMachineCode = { machine_code = [0x90, 0x90, 0xC3] }
+# or you can provide an export which runs machine code for anti-analysis
+exports.ToWyrmOnly = {} # Optional
+exports.WithMachineCode = { machine_code = [0x90, 0x90, 0xC3] } # Optional
 
+# Optional
+string_stomp.remove = [
+    "library\\std\\src\\thread\\scoped.rs", 
+]
+
+# Optional
+[implants.default.string_stomp.replace]
+"library\\std\\src\\thread\\current.rs" = "string_one"
+"C:\\Userspowershell" = "string_two"
 ```

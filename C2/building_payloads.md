@@ -14,7 +14,7 @@ See the section on [profiles](https://docs.wyrm-c2.com/implant/profiles/) for mo
 
 ## Build process
 
-To build your implants (exe, dll and svc [svc not yet implemented]) you need to navigate using the menu 
+To build your implants (exe, dll and svc) you need to navigate using the menu 
 to `Preparation -> Build all agents`. 
 
 From there, simply enter the name of your implant within the profile, for example - if you used the 

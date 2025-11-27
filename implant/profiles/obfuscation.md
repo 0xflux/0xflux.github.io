@@ -2,7 +2,7 @@
 layout: default
 title: Obfuscation
 parent: Profiles
-nav_order: 2
+nav_order: 3
 ---
 
 # Obfuscation
@@ -24,8 +24,41 @@ To timestomp the binary, you can use the `timestomp` key with a british date/tim
 
 ```toml
 evasion.timestomp = "08/04/2022 19:53:15"
-``
+```
 
 This will change the Time-Date Stamp in the binary as follows:
 
 ![coff-header](coff-header.png)
+
+## String scrubbing
+
+String scrubbing allows you to either remove, or replace strings that get compiled into the binary. This may be useful for some in memory
+evasion, replacing strings which are fingerprinted as part of Yara rules etc. **Use this with care**, this could break things in the binary
+so make sure you test it after building.
+
+You must escape backslashes in this - so, if your target replacement has one backslash: `\`, then you will need two `\\`. If the target
+has two backslashes, then equally you must use four: `\\\\`. Note that this string scrubbing utility does **not** include unicode strings.
+
+You have two options with this, `string_stomp.remove` and `string_stomp.replace`.
+
+### string_stomp.remove
+
+To fully remove strings from the binary, you can add each item in a list like so, under the implant profile:
+
+```toml
+string_stomp.remove = [
+    "library\\std\\src\\thread\\scoped.rs",
+    "Another string here",
+]
+```
+
+### string_stomp.replace
+
+To use the replacer, it is easier to mark an area in the toml for this with `[implants.default.string_stomp.replace]` heading,
+containing underneath it, containing `(string to target) = (what to replace with)`. Such as:
+
+```toml
+[implants.default.string_stomp.replace]
+"library\\std\\src\\thread\\current.rs" = "string_one"
+"C:\\Userspowershell" = "string_two"
+```
