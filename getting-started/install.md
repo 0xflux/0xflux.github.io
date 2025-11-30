@@ -38,6 +38,10 @@ Expect the build process to take several minutes when building for the first tim
   - If you wish to manually change the above, you will need to do so in the `docker-compose.yml` and `nginx/nginx.conf`.
 - Client: This build pipeline pulls in the client and shared crates.
 
+Whilst we include the `--build` flag for ensuring changes make it to the container, if you are simply stopping and starting the containers
+after the first build with NO changes to pass over (e.g. you didn't change the C2 profile), then you can start the container the usual way, without
+having to wait for the build process. This flag is ONLY for when you wish to ensure changes are pushed into the container.
+
 ## Profiles
 
 Before you can build the server, you must have a profile in the following directory: `c2/profiles/`, it can be named anything, but it must be a `.toml` file.
