@@ -34,7 +34,8 @@ This will change the Time-Date Stamp in the binary as follows:
 
 String scrubbing allows you to either remove, or replace strings that get compiled into the binary. This may be useful for some in memory
 evasion, replacing strings which are fingerprinted as part of Yara rules etc. **Use this with care**, this could break things in the binary
-so make sure you test it after building.
+so make sure you test it after building. As an example, I replaced an instance of `C:\\powershell` with a fake string, and this prevented
+running powershell from the agent.
 
 You must escape backslashes in this - so, if your target replacement has one backslash: `\`, then you will need two `\\`. If the target
 has two backslashes, then equally you must use four: `\\\\`. Note that this string scrubbing utility does **not** include unicode strings.
@@ -60,5 +61,5 @@ containing underneath it, containing `(string to target) = (what to replace with
 ```toml
 [implants.default.string_stomp.replace]
 "library\\std\\src\\thread\\current.rs" = "string_one"
-"C:\\Userspowershell" = "string_two"
+"Some\\path\\here" = "string_two"
 ```

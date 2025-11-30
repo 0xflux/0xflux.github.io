@@ -76,5 +76,5 @@ string_stomp.remove = [
 # Optional
 [implants.default.string_stomp.replace]
 "library\\std\\src\\thread\\current.rs" = "string_one"
-"C:\\Userspowershell" = "string_two"
+"Some\\path\\here" = "string_two"
 ```
