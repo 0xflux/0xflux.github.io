@@ -35,3 +35,9 @@ Read the release notes, ensure you do a clean build of changed components, usual
 And make sure to restart nginx for it to have ingested the latest configs.
 
 - `docker compose restart nginx`
+
+## Sometimes I don't see the output of the first (few) commands
+
+There's currently a bug which only happens on rare occasion, where the first few results don't show in the terminal, but they are
+being added to your client properly. Do a refresh of the page and they should appear. This bug is irking me, I cannot seem to find it. It
+likely has something to do with how Leptos is deciding whether (or not) to render the messages.

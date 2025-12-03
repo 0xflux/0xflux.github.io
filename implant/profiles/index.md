@@ -37,7 +37,8 @@ token = "a_default_token" # A default value if not specified in a listener - a c
 # or you can build specific ones by passing in the implant's name, in this case, it is 'default'.
 [implants.default]
 debug = false # Optional, true specifies a debug build - note this will also mean strings are not encrypted if set to true
-svc_name = "PrintScanService" # Name passed to SCM of the .svc binary
+svc_name = "PrintScanService" # Name passed to SCM of the .svc binary, required.
+mutex = "WinRegister" # Optional
 
 network.address = "https://localhost" # required
 # The URI cannot match a download URI, the server will return an error
@@ -67,6 +68,8 @@ anti_sandbox.trig = true # Optional (does not apply to the svc binary)
 # or you can provide an export which runs machine code for anti-analysis
 exports.ToWyrmOnly = {} # Optional
 exports.WithMachineCode = { machine_code = [0x90, 0x90, 0xC3] } # Optional
+# To provide full DLL side-loading, the below can be used.
+exports.proxy.proxy = {"VerQueryValueW" = "proxied", "GetFileVersionInfoSizeW" = "proxied", "GetFileVersionInfoW" = "proxied"}
 
 # Optional
 string_stomp.remove = [

@@ -28,7 +28,8 @@ code as a DLL and import it into programs you wish to have add numbers together.
 This exported function in a DLL is referred to as an export, and exists in the DLL's export table. You can view DLL exports with tools like
 **dumpbin**, **disassemblers**, or [[PE Bear](https://github.com/hasherezade/pe-bear)](https://github.com/hasherezade/pe-bear).
 
-Wyrm builds executables, but also DLL's, which opens much more slippery techniques such as [DLL Sideloading](https://attack.mitre.org/techniques/T1574/001/).
+Wyrm builds not only executables and services, but also DLL's, which opens more covert techniques 
+such as [DLL Sideloading](https://attack.mitre.org/techniques/T1574/001/) which can be constructed using the proxy format found below.
 
 ## Syntax
 
@@ -48,6 +49,24 @@ exports.WithMachineCode = {}
 
 The `= {}` is necessary to conform with toml requirements. Doing this style of export will simply launch the entry code of Wyrm when you call that
 `WithMachineCode` export (either from Search Order Hijacking, RunDll, or via your own code).
+
+### DLL Sideloading Proxy export
+
+To use DLL Sideloading in the profile builder, you need to use the below format (provided as an example for version.dll):
+
+```toml
+exports.proxy.proxy = {"VerQueryValueW" = "proxied", "GetFileVersionInfoSizeW" = "proxied", "GetFileVersionInfoW" = "proxied"}
+```
+
+First, the key of the entry must be `exports` followed by two subsequent sub-keys of `proxy.proxy`. Then we build a map of key value pairs, where
+the key is the proxied **DLL Export** required by your target, and the value is the name of the proxied DLL.
+
+Taking version.dll; VSCode loads version.dll via a non-hardcoded path to C:\Windows\System32. So, to build the attack we see that VSCode requires
+the exports from version.dll: **VerQueryValueW**, **GetFileVersionInfoSizeW** and **GetFileVersionInfoW**. To build the attack, we copy 
+version.dll from C:\Windows\System32 into the VSCode folder, and rename it to **proxied.dll**. Therefore, the value in the above map becomes 
+**proxied**, as this is the name of the actual DLL Wyrm will redirect to.
+
+You may wish to use DLL proxying in conjunction with the mutex profile option.
 
 ### Export with machine code
 
