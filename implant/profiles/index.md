@@ -38,7 +38,7 @@ token = "a_default_token" # A default value if not specified in a listener - a c
 [implants.default]
 debug = false # Optional, true specifies a debug build - note this will also mean strings are not encrypted if set to true
 svc_name = "PrintScanService" # Name passed to SCM of the .svc binary, required.
-mutex = "WinRegister" # Optional
+mutex = "WinRegister" # Optional - use with care, see notes.
 
 network.address = "https://localhost" # required
 # The URI cannot match a download URI, the server will return an error
