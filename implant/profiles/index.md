@@ -60,6 +60,7 @@ network.jitter = 50
 # old. Note: This does not affect the timestamp of the file on disk when it is dropped, that is managed by the OS.
 evasion.timestomp = "08/04/2022 19:53:15"
 evasion.patch_etw = true # Optional, patches Events Tracing for Windows on the process
+evasion.patch_amsi = true # Optional
 
 anti_sandbox.ram = true # Optional
 anti_sandbox.trig = true # Optional (does not apply to the svc binary)

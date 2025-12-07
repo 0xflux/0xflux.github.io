@@ -37,3 +37,14 @@ To enable this feature, simply set:
 ```toml
 evasion.patch_etw = true
 ```
+
+### AMSI
+
+The implant supports the ability to patch AMSI via a `ret` instruction being written at the first byte of amsi.AmsiScanBuffer. This is
+done by the agent when necessary if enabled, for instance, immediately before running a dotnet binary in memory via `dotex`.
+
+To enable this feature, simply set:
+
+```toml
+evasion.patch_amsi = true
+```

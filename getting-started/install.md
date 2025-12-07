@@ -59,15 +59,15 @@ This must be configured before continuing. If this is your first time using the 
 To have the C2 run and be exposed to the internet, simply run (in order):
 
 ```shell
-docker compose up -d --build c2_db # Database
-docker compose up -d --build c2 # Main C2
-docker compose up -d --build nginx # Nginx web server
+sudo docker compose up -d --build c2_db # Database
+sudo docker compose up -d --build c2 # Main C2
+sudo docker compose up -d --build nginx # Nginx web server
 ```
 
 To run the client, simply run:
 
 ```shell
-docker compose up -d --build client
+suco docker compose up -d --build client
 ```
 
 Now, you can access the client on http://localhost:3000.
