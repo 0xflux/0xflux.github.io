@@ -13,6 +13,8 @@ nav_order: 2
 
 This command currently executes the .NET payload in the implant’s own process, so long-running or never-returning assemblies may cause the implant to become unresponsive or lost.
 
+![Dotex example](image.png)
+
 ### Usage
 
 ```shell
