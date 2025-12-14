@@ -66,4 +66,11 @@ ssl_certificate     /etc/nginx/certs/cert.pem;
 ssl_certificate_key /etc/nginx/certs/key.pem;
 ```
 
+You want to make sure you move the actual certificates, for example:
+
+```shell
+sudo cp -L /etc/letsencrypt/live/c2.fluxsec.red/fullchain.pem   nginx/certs/cert.pem
+sudo cp -L /etc/letsencrypt/live/c2.fluxsec.red/privkey.pem     nginx/certs/key.pem
+```
+
 And with that, you are done, ready for the next step!
