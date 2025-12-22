@@ -35,3 +35,39 @@ can arbitrarily start from that location. The thread of execution will then reso
 Visualised:
 
 ![Wyrm DLL injector](inj.svg)
+
+## Using the reflective loader
+
+If you wish to manually build an injector / make it work with existing tooling, then you can map the Wyrm DLL (not the loader version)
+into memory however you like. Then you need to find and call the Load export (can do this by resolving the headers at the start of the PE).
+
+When you go to call the `Load` function, you must pass a parameter which is the base address of the allocation where the Wyrm rDLL lives.
+You can do this across FFI boundaries (e.g. from C/C++).
+
+The function signature for `Load` is:
+
+```rust
+pub unsafe extern "system" fn Load(image_base: *mut c_void) -> u32
+```
+
+So you must satisfy this. An example call (in Rust, but feel free to use C/C++) is:
+
+```rust
+// Allocate memory
+let p_alloc = VirtualAlloc(
+    null_mut(),
+    nt.OptionalHeader.SizeOfImage as usize,
+    MEM_COMMIT | MEM_RESERVE,
+    PAGE_READWRITE,
+);
+
+// Fill the memory + set PAGE_EXECUTE_READWRITE
+// ..
+
+// Resolve the function pointer for the Load export
+// ..
+
+// Now call that function pointer, passing in the base address of the allocation
+load(p_alloc);
+
+```
