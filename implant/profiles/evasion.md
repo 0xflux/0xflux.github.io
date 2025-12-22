@@ -11,6 +11,8 @@ Please refer to the parent page for where the below keys should go in the profil
 
 ## Anti-sandbox
 
+Be **careful** when using the evasion options when sideloading; this can cause the target program to crash.
+
 The implant can be configured for sandbox evasion with the following settings:
 
 - `anti_sandbox.ram`: This will make the implant check that there is at least 4 GB of memory installed on the machine.
