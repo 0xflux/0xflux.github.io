@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Implant
+title: Wyrm Loader
+parent: Implant
 nav_order: 2
 ---
 
@@ -9,7 +10,7 @@ nav_order: 2
 The implant primarily is prepared to be a reflective DLL which means it can load itself when a thread is spawned over its reflective entry.
 
 Currently, the reflective entrypoint is the export `Load`, meaning the PE must be mapped into memory, and then a thread runs over `Load`. 
-The `Load` export is fully position independent and does not rely on the standard library, meaning nothing needs to be set up specially
+The `Load` export is fully 'context' independent and does not rely on the standard library, meaning nothing needs to be set up specially
 for it to work.
 
 The loader packs the Wyrm post exploitation payload into an encrypted region of memory which when compiled, is placed into the **.text**
@@ -28,7 +29,7 @@ below:
 
 ![PE decryption](image.png)
 
-The loader will then resolve the relevant exports, and jump to the `Load` export, which is position independent in that execution 
+The loader will then resolve the relevant exports, and jump to the `Load` export, which is 'context' independent in that execution 
 can arbitrarily start from that location. The thread of execution will then resolve and realign the DLL, and it can run as normal.
 
 Visualised:
