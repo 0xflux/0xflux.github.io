@@ -12,6 +12,11 @@ obfuscation and networking - they also provide basic requirements such as the C2
 
 See the section on [profiles](https://docs.wyrm-c2.com/implant/profiles/) for more information on building this out.
 
+The C2 will give you the following, for each agent profile:
+
+- Exe, Dll, Svc which is a `reflective loader`. These are the **recommended** payloads to use. You may use the profile builder to also include DLL proxying (search order hijacking etc) and custom exports to the DLL loader. These payloads are prepended with **loader_{profile name}**.
+- Exe, Dll, Svc of the raw `Wyrm` payload. This is good for use with your own loaders / other tooling. The DLL provided comes with a reflective loader, located at the export named `Load`. If you wish to use the Reflective DLL feature of the DLL, you can simply invoke the DLL from that export. Support is coming for a shellcode bootstrap at the beginning of the RDLL such that it will auto load when executed from byte 0x0.
+
 ## Build process
 
 To build your implants (exe, dll and svc) you need to navigate using the menu 

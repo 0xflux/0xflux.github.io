@@ -10,11 +10,13 @@ nav_order: 4
 ## Overview
 
 `pull` exfiltrates a file from the target machine to the C2.  
-The supplied path may be **absolute or relative**, and the file will be uploaded directly to the server.
+The supplied path may be **absolute or relative**, and the file will be uploaded directly to the server as a buffered stream.
 
 The file is stored on the C2 in the **docker container** under: `data/loot/<target hostname>/<full original file path>`
 
 If a file already exists at that location, it will be overwritten.
+
+Note: The response will happen **immediately** upon the implant receiving tasking, and not when the implant next checks in.
 
 ## Usage
 
@@ -32,8 +34,8 @@ This retrieves the file from the target and uploads it to the C2 using its origi
 
 ## Memory Considerations
 
-Using `pull` causes the file to be **fully read into memory** on the target machine before exfiltration.  
-For this reason, only use `pull` on files **smaller than the available system RAM**.
+Using `pull` causes the file to be buffered rather than read in one go, so you will not cause the device to go out of memory
+if you exfiltrate a very large file.
 
 ## Important Notes
 
