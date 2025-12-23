@@ -52,6 +52,10 @@ The `= {}` is necessary to conform with toml requirements. Doing this style of e
 
 ### DLL Sideloading Proxy export
 
+**Warning**: When using sideloading implant console output does not get captured; if you wish to execute dotnet via the `dotex` 
+command, I recommend spawning Wyrm in a new process. Sideloading is great for persistence and initial access, but has some limitations for
+full-blown post exploitation.
+
 To use DLL Sideloading in the profile builder, you need to use the below format (provided as an example for version.dll):
 
 ```toml
