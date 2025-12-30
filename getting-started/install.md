@@ -67,7 +67,7 @@ sudo docker compose up -d --build nginx # Nginx web server
 To run the client, simply run:
 
 ```shell
-suco docker compose up -d --build client
+sudo docker compose up -d --build client
 ```
 
 Now, you can access the client on http://localhost:3000.
