@@ -11,7 +11,8 @@ Please refer to the parent page for where the below keys should go in the profil
 
 ## Anti-sandbox
 
-Be **careful** when using the evasion options when sideloading; this can cause the target program to crash.
+Be **careful** when using the evasion options when sideloading; this can cause the target program to crash. Some options can also occasionally
+cause crashes when using them with WOF's (Wyrm Object Files), always test before use.
 
 The implant can be configured for sandbox evasion with the following settings:
 
@@ -42,7 +43,9 @@ evasion.patch_etw = true
 
 ### AMSI
 
-The implant supports the ability to patch AMSI via a `ret` instruction being written at the first byte of amsi.AmsiScanBuffer. This is
+The implant supports the ability to evade AMSI 
+by using [Vectored Exception Handling Squared](https://fluxsec.red/vectored-exception-handling-squared-rust). 
+This is
 done by the agent when necessary if enabled, for instance, immediately before running a dotnet binary in memory via `dotex`.
 
 To enable this feature, simply set:

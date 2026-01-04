@@ -32,3 +32,5 @@ explanatory.
 - Executing dotnet: See the dedicated page
 - Exfiltrating files: See the `pull` dedicated page
 - Dropping files on disk: See the dedicated `drop` page
+- Inject: See the dedicated page
+- Spawn: See the dedicated page
